@@ -28,21 +28,6 @@ urlpatterns = [
     url(r'^photos/upload/$', create, name='create'),
     url(r'^admin/', admin.site.urls),
     url(r'^login/$', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
-    # url(
-    #     r'^accounts/login/',
-    #     auth_views.login,
-    #     name='login',
-    #     kwargs={
-    #         'template_name': 'login.html'
-    #     }
-    # ),
-    # url(
-    #     r'^accounts/logout/',
-    #     auth_views.logout,
-    #     name='logout',
-    #     kwargs={
-    #         'next_page': settings.LOGIN_URL,
-    #     }
-    # ),
+    url(r'^logout/$', auth_views.LogoutView.as_view(next_page="settings.LOGIN_URL"), name="logout"), 
 ]
 urlpatterns += static('upload_files', document_root=settings.MEDIA_ROOT)    
